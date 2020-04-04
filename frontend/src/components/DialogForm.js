@@ -72,7 +72,9 @@ const DialogForm = props => {
       id: 0,
       numero: '',
       dono_linha: '',
+      email_dono: '',
       loja: '',
+      operadora: 'Oi',
       status: '',
     });
   };
@@ -121,7 +123,9 @@ const DialogForm = props => {
   const formik = useFormik({
     initialValues: editLinha,
     validationSchema: Yup.object({
-      numero: Yup.string().required('Obrigatório'),
+      numero: Yup.string()
+        .required('Obrigatório')
+        .min(11),
       dono_linha: Yup.string().required('Obrigatório'),
       loja: Yup.string().required('Obrigatório'),
     }),
@@ -183,7 +187,20 @@ const DialogForm = props => {
               label="Titular da Linha"
               fullWidth
               margin="dense"
-              // className={classes.formGroup}
+            />
+            <TextField
+              name="email_dono"
+              value={editLinha.email_dono}
+              onChange={handleChange}
+              helperText={
+                formik.touched.email_dono ? formik.errors.email_dono : ''
+              }
+              error={
+                formik.touched.email_dono && Boolean(formik.errors.email_dono)
+              }
+              label="E-mail"
+              fullWidth
+              margin="dense"
             />
             <TextField
               margin="dense"

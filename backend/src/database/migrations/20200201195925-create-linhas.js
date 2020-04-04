@@ -7,15 +7,15 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            ddd: {
-                type: Sequelize.STRING(2),
-                allowNull: false,
-            },
             numero: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
             dono_linha: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            email_dono: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
@@ -27,8 +27,8 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            ativa: {
-                type: Sequelize.BOOLEAN,
+            status: {
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             created_at: {

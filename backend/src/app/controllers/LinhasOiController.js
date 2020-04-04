@@ -11,12 +11,12 @@ class LinhasOiController {
             },
             attributes: [
                 'id',
-                'ddd',
                 'numero',
                 'dono_linha',
+                'email_dono',
                 'loja',
                 'operadora',
-                'ativa',
+                'status',
             ],
             order: ['id'],
         });

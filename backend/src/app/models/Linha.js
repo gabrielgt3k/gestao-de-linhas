@@ -6,10 +6,10 @@ class Linha extends Model {
             {
                 numero: Sequelize.STRING,
                 dono_linha: Sequelize.STRING,
+                email_dono: Sequelize.STRING,
                 loja: Sequelize.STRING,
-                ativa: Sequelize.BOOLEAN,
+                status: Sequelize.STRING(10),
                 operadora: Sequelize.STRING,
-                ddd: Sequelize.STRING(2),
             },
             {
                 sequelize,

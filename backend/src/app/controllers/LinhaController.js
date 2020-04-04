@@ -6,12 +6,12 @@ class LinhaController {
         const linhas = await Linha.findAll({
             attributes: [
                 'id',
-                'ddd',
                 'numero',
                 'operadora',
                 'dono_linha',
+                'email_dono',
                 'loja',
-                'ativa',
+                'status',
             ],
             order: ['id'],
         });
@@ -21,14 +21,14 @@ class LinhaController {
 
     async store(req, res) {
         const schema = Yup.object().shape({
-            ddd: Yup.string()
-                .max(2)
-                .required(),
             numero: Yup.string().required(),
             dono_linha: Yup.string().required(),
+            email_dono: Yup.string()
+                .email()
+                .required(),
             loja: Yup.string().required(),
             operadora: Yup.string().required(),
-            ativa: Yup.boolean().required(),
+            status: Yup.string().required(),
         });
 
         if (!(await schema.isValid(req.body))) {
@@ -40,7 +40,6 @@ class LinhaController {
         const linhaExiste = await Linha.findOne({
             where: {
                 numero: req.body.numero,
-                ddd: req.body.ddd,
             },
         });
 
@@ -50,27 +49,28 @@ class LinhaController {
 
         const {
             id,
-            ddd,
             numero,
             dono_linha,
+            email_dono,
             loja,
-            ativa,
+            status,
             operadora,
         } = await Linha.create(req.body);
         return res.json({
             id,
-            ddd,
             numero,
+            email_dono,
             dono_linha,
             loja,
-            ativa,
+            status,
             operadora,
         });
     }
 
     async update(req, res) {
-        const { id } = req.params;
-        const { numero, ddd } = req.body;
+        let { id } = req.params;
+        id = parseInt(id, 10);
+        const { numero } = req.body;
 
         const linha = await Linha.findByPk(id);
 
@@ -78,11 +78,10 @@ class LinhaController {
             return res.status(400).json({ error: 'Linha não encontrada' });
         }
 
-        if (linha.numero !== numero || linha.ddd !== ddd) {
+        if (linha.numero !== numero) {
             const linhaExiste = await Linha.findOne({
                 where: {
                     numero,
-                    ddd,
                 },
             });
             if (linhaExiste) {
@@ -90,9 +89,23 @@ class LinhaController {
             }
         }
 
-        const { dono_linha, operadora, ativa } = await linha.update(req.body);
+        const {
+            dono_linha,
+            email_dono,
+            operadora,
+            loja,
+            status,
+        } = await linha.update(req.body);
 
-        return res.json({ id, ddd, numero, dono_linha, operadora, ativa });
+        return res.json({
+            id,
+            numero,
+            dono_linha,
+            email_dono,
+            operadora,
+            loja,
+            status,
+        });
     }
 
     async delete(req, res) {

@@ -18,6 +18,7 @@ const LinhasOi = () => {
     id: 0,
     numero: '',
     dono_linha: '',
+    email_dono: '',
     loja: '',
     status: '',
   });
@@ -33,8 +34,8 @@ const LinhasOi = () => {
     loadData();
   }, []);
   function getUpdatedList(linha, add = true) {
-    const list = data.filter(l => l.id !== linha.id);
-    if (add) list.unshift(linha);
+    let list = data.filter(l => l.id !== linha.id);
+    if (add) list = [...list, linha];
     return list;
   }
 
@@ -49,6 +50,8 @@ const LinhasOi = () => {
       }
     }
 
+    console.log(data);
+
     updateTable();
   }, [tempLinha]);
 
@@ -57,8 +60,9 @@ const LinhasOi = () => {
       id: tableData[0],
       numero: tableData[1],
       dono_linha: tableData[2],
-      loja: tableData[3],
-      status: tableData[4],
+      email_dono: tableData[3],
+      loja: tableData[4],
+      status: tableData[5],
     };
 
     return linha;
@@ -75,7 +79,7 @@ const LinhasOi = () => {
         viewColumns: false,
         filter: false,
         sort: false,
-        display: 'excluded',
+        // display: 'excluded',
       },
     },
     {
@@ -89,6 +93,14 @@ const LinhasOi = () => {
     {
       name: 'dono_linha',
       label: 'Titular da Linha',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'email_dono',
+      label: 'E-mail',
       options: {
         filter: true,
         sort: true,
