@@ -22,10 +22,8 @@ class LinhaController {
     async store(req, res) {
         const schema = Yup.object().shape({
             numero: Yup.string().required(),
-            dono_linha: Yup.string().required(),
-            email_dono: Yup.string()
-                .email()
-                .required(),
+            dono_linha: Yup.string(),
+            email_dono: Yup.string().email(),
             loja: Yup.string().required(),
             operadora: Yup.string().required(),
             status: Yup.string().required(),

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Dialog,
   Button,
@@ -109,12 +111,15 @@ const DialogForm = props => {
 
   const handleSubmit = async () => {
     setLoading(true);
-
-    const linhaSubmit = editLinha;
-    const method = linhaSubmit.id ? 'put' : 'post';
-    const url = linhaSubmit.id ? `/linhas/${linhaSubmit.id}` : `/linhas`;
-    const response = await api[method](url, linhaSubmit);
-    obtemTempLinha(response.data);
+    try {
+      const linhaSubmit = editLinha;
+      const method = linhaSubmit.id ? 'put' : 'post';
+      const url = linhaSubmit.id ? `/linhas/${linhaSubmit.id}` : `/linhas`;
+      const response = await api[method](url, linhaSubmit);
+      obtemTempLinha(response.data);
+    } catch (error) {
+      alert('erro');
+    }
     if (!isEditing) clearFields();
     setLoading(false);
     setOpen(false);
@@ -126,7 +131,6 @@ const DialogForm = props => {
       numero: Yup.string()
         .required('Obrigatório')
         .min(11),
-      dono_linha: Yup.string().required('Obrigatório'),
       loja: Yup.string().required('Obrigatório'),
     }),
     enableReinitialize: true,

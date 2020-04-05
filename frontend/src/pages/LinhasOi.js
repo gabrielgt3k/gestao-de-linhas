@@ -34,8 +34,8 @@ const LinhasOi = () => {
     loadData();
   }, []);
   function getUpdatedList(linha, add = true) {
-    let list = data.filter(l => l.id !== linha.id);
-    if (add) list = [...list, linha];
+    const list = data.filter(l => l.id !== linha.id);
+    if (add) list.push(linha);
     return list;
   }
 
