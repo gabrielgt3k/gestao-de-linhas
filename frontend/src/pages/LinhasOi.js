@@ -50,8 +50,6 @@ const LinhasOi = () => {
       }
     }
 
-    console.log(data);
-
     updateTable();
   }, [tempLinha]);
 

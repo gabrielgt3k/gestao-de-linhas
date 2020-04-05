@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core/';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  List,
+  Toolbar,
+  AppBar,
+  Drawer,
+  CssBaseline,
+  Divider,
+  IconButton,
+  Typography,
+  Badge,
+  Collapse,
+} from '@material-ui/core/';
 
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
 
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import PhoneIcon from '@material-ui/icons/Phone';
+import HomeIcon from '@material-ui/icons/Home';
+
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -102,11 +108,20 @@ const useStyles = makeStyles(theme => ({
   fixedHeight: {
     height: 240,
   },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
 export default function Nav({ children }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(false);
+  const [openLinhas, setOpenLinhas] = useState(false);
+
+  const handleListLinhas = () => {
+    setOpenLinhas(!openLinhas);
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -164,29 +179,52 @@ export default function Nav({ children }) {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button onClick={handleDrawerClose} component={Link} to="/">
             <ListItemIcon>
-              <DashboardIcon />
+              <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={handleListLinhas}>
             <ListItemIcon>
-              <ShoppingCartIcon />
+              <PhoneIcon />
             </ListItemIcon>
-            <ListItemText primary="Equipamentos" />
+            <ListItemText primary="Linhas" />
+            {openLinhas ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
+          <Collapse in={openLinhas} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem
+                button
+                onClick={handleDrawerClose}
+                className={classes.nested}
+                component={Link}
+                to="/linhas"
+              >
+                <ListItemIcon>
+                  <PhoneIcon />
+                </ListItemIcon>
+                <ListItemText primary="Linhas Oi" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={handleDrawerClose}
+                className={classes.nested}
+                component={Link}
+                to="/linhas"
+              >
+                <ListItemIcon>
+                  <PhoneIcon />
+                </ListItemIcon>
+                <ListItemText primary="Linhas Vivo" />
+              </ListItem>
+            </List>
+          </Collapse>
           <ListItem button>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Colaborares" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <BarChartIcon />
-            </ListItemIcon>
-            <ListItemText primary="Linhas" />
           </ListItem>
         </List>
         <Divider />

@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import GlobalStyles from './styles/global';
 import Nav from './components/Nav';
-import Footer from './components/Footer';
 import Routes from './routes';
 
 const theme = createMuiTheme({
