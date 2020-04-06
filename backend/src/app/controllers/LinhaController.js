@@ -3,7 +3,7 @@ import Linha from '../models/Linha';
 
 class LinhaController {
     async index(req, res) {
-        const linhas = await Linha.findAll({
+        const linhas = await Linha.findAndCountAll({
             attributes: [
                 'id',
                 'numero',
@@ -16,7 +16,9 @@ class LinhaController {
             order: ['id'],
         });
 
-        return res.json(linhas);
+        res.setHeader('X-Total-Count', linhas.count);
+
+        return res.json(linhas.rows);
     }
 
     async store(req, res) {

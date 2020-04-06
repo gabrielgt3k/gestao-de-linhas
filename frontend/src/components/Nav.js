@@ -18,7 +18,6 @@ import {
 } from '@material-ui/core/';
 
 import PeopleIcon from '@material-ui/icons/People';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -26,6 +25,7 @@ import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import PhoneIcon from '@material-ui/icons/Phone';
 import HomeIcon from '@material-ui/icons/Home';
 
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -224,7 +224,7 @@ export default function Nav({ children }) {
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary="Colaborares" />
+            <ListItemText primary="Equipamentos" />
           </ListItem>
         </List>
         <Divider />
@@ -236,3 +236,7 @@ export default function Nav({ children }) {
     </div>
   );
 }
+
+Nav.propTypes = {
+  children: PropTypes.node.isRequired,
+};
