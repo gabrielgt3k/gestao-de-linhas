@@ -25,13 +25,15 @@ const LinhasOi = () => {
 
   useEffect(() => {
     async function loadData() {
-      setLoadingTable(true);
       const response = await api.get('/linhas');
       setData(response.data);
       setLoadingTable(false);
     }
 
-    loadData();
+    setLoadingTable(true);
+    setTimeout(() => {
+      loadData();
+    }, 2000);
   }, []);
   function getUpdatedList(linha, add = true) {
     const list = data.filter(l => l.id !== linha.id);
