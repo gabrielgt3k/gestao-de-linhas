@@ -33,7 +33,7 @@ const LinhasOi = () => {
     setLoadingTable(true);
     setTimeout(() => {
       loadData();
-    }, 2000);
+    }, 1500);
   }, []);
   function getUpdatedList(linha, add = true) {
     const list = data.filter(l => l.id !== linha.id);
