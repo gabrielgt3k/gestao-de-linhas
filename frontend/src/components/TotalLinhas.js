@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, makeStyles, Avatar } from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Title from './Title';
 import CardTemplate from './CardTemplate';
@@ -21,7 +22,8 @@ export default function TotalLinhas() {
 
   const useStyles = makeStyles(theme => ({
     depositContext: {
-      flex: 1,
+      flex: 2,
+      textAlign: 'center',
     },
     title: {
       display: 'flex',
@@ -31,6 +33,10 @@ export default function TotalLinhas() {
         margin: theme.spacing(1),
       },
     },
+    avatar: {
+      color: '#fff',
+      backgroundColor: green[500],
+    },
   }));
 
   const classes = useStyles();
@@ -38,15 +44,19 @@ export default function TotalLinhas() {
   return (
     <CardTemplate>
       <div className={classes.title}>
-        <Avatar>
+        <Avatar className={classes.avatar}>
           <AssignmentIcon />
         </Avatar>
-        <Title>Total de linhas cadastradas</Title>
+        <Title color="info">Total Linhas cadastradas</Title>
       </div>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        somado de todas as operadoras
+      <Typography
+        color="textSecondary"
+        component="p"
+        className={classes.depositContext}
+      >
+        todas as operadoras
       </Typography>
-      <Typography component="p" variant="h3">
+      <Typography style={{ textAlign: 'center' }} component="p" variant="h3">
         {totalLinhas}
       </Typography>
     </CardTemplate>

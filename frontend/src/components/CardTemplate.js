@@ -30,7 +30,7 @@ export default function CardTemplate({ children }) {
   return (
     <Container maxWidth="lg" className={classes.container}>
       <Grid container spacing={3}>
-        <Grid item>
+        <Grid item xs zeroMinWidth>
           <Paper className={fixedHeightPaper}>{children}</Paper>
         </Grid>
       </Grid>
