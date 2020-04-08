@@ -226,6 +226,24 @@ export default function Nav({ children }) {
             </ListItemIcon>
             <ListItemText primary="Equipamentos" />
           </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Equipamentos" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Equipamentos" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Equipamentos" />
+          </ListItem>
         </List>
         <Divider />
       </Drawer>

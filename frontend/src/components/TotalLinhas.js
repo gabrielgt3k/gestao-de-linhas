@@ -36,6 +36,8 @@ export default function TotalLinhas() {
     avatar: {
       color: '#fff',
       backgroundColor: green[500],
+      width: 50,
+      height: 50,
     },
   }));
 
@@ -49,15 +51,15 @@ export default function TotalLinhas() {
         </Avatar>
         <Title color="info">Total Linhas cadastradas</Title>
       </div>
+      <Typography style={{ textAlign: 'center' }} component="p" variant="h3">
+        {totalLinhas}
+      </Typography>
       <Typography
         color="textSecondary"
         component="p"
         className={classes.depositContext}
       >
         todas as operadoras
-      </Typography>
-      <Typography style={{ textAlign: 'center' }} component="p" variant="h3">
-        {totalLinhas}
       </Typography>
     </CardTemplate>
   );

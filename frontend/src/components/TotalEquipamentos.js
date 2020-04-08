@@ -15,6 +15,8 @@ export default function TotalLinhas() {
   const useStyles = makeStyles(theme => ({
     depositContext: {
       flex: 2,
+      textAlign: 'center',
+      marginTop: 10,
     },
     title: {
       display: 'flex',
@@ -27,6 +29,8 @@ export default function TotalLinhas() {
     avatar: {
       color: '#fff',
       backgroundColor: pink[500],
+      width: 50,
+      height: 50,
     },
   }));
 
@@ -38,13 +42,13 @@ export default function TotalLinhas() {
         <Avatar className={classes.avatar}>
           <AssignmentIcon />
         </Avatar>
-        <Title>Equipamentos cadastrados</Title>
+        <Title>Equipamentos</Title>
       </div>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        Notebooks, celulares etc
-      </Typography>
       <Typography style={{ textAlign: 'center' }} component="p" variant="h3">
         {totalEquip}
+      </Typography>
+      <Typography color="textSecondary" className={classes.depositContext}>
+        Notebooks, celulares etc
       </Typography>
     </CardTemplate>
   );

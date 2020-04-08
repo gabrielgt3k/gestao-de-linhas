@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function Title({ children }) {
   const useStyles = makeStyles(theme => ({
     title: {
-      color: theme.palette.primary.main,
+      color: theme.palette.info.main,
     },
   }));
 
