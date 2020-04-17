@@ -1,11 +1,13 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import GlobalStyles from './styles/global';
-import Nav from './components/Nav';
 
 import Routes from './routes/index';
 import history from './services/history';
+
+import store from './store';
 
 const theme = createMuiTheme({
   palette: {
@@ -44,14 +46,14 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <MuiThemeProvider theme={theme}>
-      <Router history={history}>
-        <Nav>
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <Router history={history}>
           <Routes />
-          <GlobalStyles />
-        </Nav>
-      </Router>
-    </MuiThemeProvider>
+        </Router>
+        <GlobalStyles />
+      </MuiThemeProvider>
+    </Provider>
   );
 }
 

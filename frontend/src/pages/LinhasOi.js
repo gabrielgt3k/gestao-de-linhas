@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 
 import DialogForm from '../components/DialogForm';
+import Nav from '../components/Nav';
 import api from '../services/api';
 
 const LinhasOi = () => {
@@ -216,7 +217,7 @@ const LinhasOi = () => {
   });
 
   return (
-    <>
+    <Nav>
       <div style={{ marginBottom: 10 }}>
         <DialogForm data={{ obtemTempLinha: obtemTempLinha.bind(this) }} />
       </div>
@@ -238,7 +239,7 @@ const LinhasOi = () => {
           options={options}
         />
       </MuiThemeProvider>
-    </>
+    </Nav>
   );
 };
 
