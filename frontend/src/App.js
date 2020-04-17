@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import GlobalStyles from './styles/global';
 import Nav from './components/Nav';
-import Routes from './routes';
+
+import Routes from './routes/index';
+import history from './services/history';
 
 const theme = createMuiTheme({
   palette: {
@@ -43,12 +45,12 @@ const theme = createMuiTheme({
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
+      <Router history={history}>
         <Nav>
           <Routes />
           <GlobalStyles />
         </Nav>
-      </BrowserRouter>
+      </Router>
     </MuiThemeProvider>
   );
 }
