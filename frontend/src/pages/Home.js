@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles, Container } from '@material-ui/core';
-import Nav from '../components/Nav';
 import TotalLinhas from '../components/TotalLinhas';
 import TotalEquipamentos from '../components/TotalEquipamentos';
+import Nav from '../components/Nav';
 
 export default function Home() {
   const useStyles = makeStyles(() => ({
