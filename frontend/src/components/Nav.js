@@ -179,7 +179,12 @@ export default function Nav({ children }) {
         </div>
         <Divider />
         <List>
-          <ListItem button onClick={handleDrawerClose} component={Link} to="/">
+          <ListItem
+            button
+            onClick={handleDrawerClose}
+            component={Link}
+            to="/home"
+          >
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>

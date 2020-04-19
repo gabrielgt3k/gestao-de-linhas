@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
@@ -7,7 +9,7 @@ import GlobalStyles from './styles/global';
 import Routes from './routes/index';
 import history from './services/history';
 
-import store from './store';
+import { store, persistor } from './store';
 
 const theme = createMuiTheme({
   palette: {
@@ -47,12 +49,15 @@ const theme = createMuiTheme({
 function App() {
   return (
     <Provider store={store}>
-      <MuiThemeProvider theme={theme}>
-        <Router history={history}>
-          <Routes />
-        </Router>
-        <GlobalStyles />
-      </MuiThemeProvider>
+      <PersistGate persistor={persistor}>
+        <MuiThemeProvider theme={theme}>
+          <Router history={history}>
+            <Routes />
+          </Router>
+          <GlobalStyles />
+          <ToastContainer autoClose={5000} />
+        </MuiThemeProvider>
+      </PersistGate>
     </Provider>
   );
 }
