@@ -80,7 +80,6 @@ export default function SignInSide() {
 
   function handleSubmit() {
     dispatch(signInRequest(email, senha));
-    setSenha('');
   }
 
   const formik = useFormik({

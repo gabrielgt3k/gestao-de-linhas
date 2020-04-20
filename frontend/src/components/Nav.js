@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    background: theme.palette.info.main,
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -76,6 +77,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    background: theme.palette.info.dark,
   },
   drawerPaperClose: {
     overflowX: 'hidden',
@@ -186,20 +188,21 @@ export default function Nav({ children }) {
             to="/home"
           >
             <ListItemIcon>
-              <HomeIcon />
+              <HomeIcon style={{ color: '#fafafa' }} />
             </ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText style={{ color: '#fafafa' }} primary="Home" />
           </ListItem>
           <ListItem button onClick={handleListLinhas}>
             <ListItemIcon>
-              <PhoneIcon />
+              <PhoneIcon style={{ color: '#fafafa' }} />
             </ListItemIcon>
-            <ListItemText primary="Linhas" />
+            <ListItemText style={{ color: '#fafafa' }} primary="Linhas" />
             {openLinhas ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openLinhas} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem
+                style={{ color: '#fafafa' }}
                 button
                 onClick={handleDrawerClose}
                 className={classes.nested}
@@ -207,19 +210,23 @@ export default function Nav({ children }) {
                 to="/linhas"
               >
                 <ListItemIcon>
-                  <PhoneIcon />
+                  <PhoneIcon style={{ color: '#fafafa' }} />
                 </ListItemIcon>
-                <ListItemText primary="Linhas Oi" />
+                <ListItemText
+                  style={{ color: '#fafafa' }}
+                  primary="Linhas Oi"
+                />
               </ListItem>
               <ListItem
                 button
+                style={{ color: '#fafafa' }}
                 onClick={handleDrawerClose}
                 className={classes.nested}
                 component={Link}
                 to="/linhas"
               >
                 <ListItemIcon>
-                  <PhoneIcon />
+                  <PhoneIcon style={{ color: '#fafafa' }} />
                 </ListItemIcon>
                 <ListItemText primary="Linhas Vivo" />
               </ListItem>
@@ -227,27 +234,9 @@ export default function Nav({ children }) {
           </Collapse>
           <ListItem button>
             <ListItemIcon>
-              <PeopleIcon />
+              <PeopleIcon style={{ color: '#fafafa' }} />
             </ListItemIcon>
-            <ListItemText primary="Equipamentos" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Equipamentos" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Equipamentos" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Equipamentos" />
+            <ListItemText style={{ color: '#fafafa' }} primary="Equipamentos" />
           </ListItem>
         </List>
         <Divider />
