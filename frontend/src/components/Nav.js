@@ -13,20 +13,21 @@ import {
   Divider,
   IconButton,
   Typography,
-  Badge,
   Collapse,
+  Menu,
+  MenuItem,
 } from '@material-ui/core/';
-
+import { useDispatch, useSelector } from 'react-redux';
 import PeopleIcon from '@material-ui/icons/People';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import PhoneIcon from '@material-ui/icons/Phone';
 import HomeIcon from '@material-ui/icons/Home';
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { signOut } from '../store/modules/auth/actions';
 
 const drawerWidth = 240;
 
@@ -119,6 +120,11 @@ export default function Nav({ children }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [openLinhas, setOpenLinhas] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
 
   const handleListLinhas = () => {
     setOpenLinhas(!openLinhas);
@@ -130,6 +136,18 @@ export default function Nav({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleMenu = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  function handleLodout() {
+    dispatch(signOut());
+  }
 
   return (
     <div className={classes.root}>
@@ -160,11 +178,25 @@ export default function Nav({ children }) {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
+          <IconButton onClick={handleMenu} color="inherit">
+            <AccountCircle />
           </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={openMenu}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleLodout}>Logout</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
       <Drawer
