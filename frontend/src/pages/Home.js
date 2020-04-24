@@ -18,7 +18,6 @@ export default function Home() {
     <Container component="div" className={classes.container}>
       <TotalLinhas />
       <TotalEquipamentos />
-      <TotalEquipamentos />
     </Container>
   );
 }

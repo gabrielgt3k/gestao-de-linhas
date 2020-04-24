@@ -19,6 +19,7 @@ import { useFormik } from 'formik';
 import { signInRequest } from '../store/modules/auth/actions';
 
 import logoRural from '../assets/logo_rural_ti.png';
+import bgLodin from '../assets/bg-rural.jpg';
 
 function Copyright() {
   return (
@@ -38,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   image: {
-    background: 'url(https://source.unsplash.com/random)',
+    background: `url(${bgLodin})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light'
@@ -132,7 +133,7 @@ export default function SignInSide() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" checked color="primary" />}
               label="Lembrar-me"
             />
             <Button
@@ -149,14 +150,6 @@ export default function SignInSide() {
                 'Entrar'
               )}
             </Button>
-
-            <Grid container>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Não tem uma conta? Cadastre-se
-                </Link>
-              </Grid>
-            </Grid>
             <Box mt={5}>
               <Copyright />
             </Box>

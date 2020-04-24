@@ -17,6 +17,7 @@ const theme = createMuiTheme({
       light: '#33ab9f',
       main: '#009688',
       dark: '#00695f',
+      mainGradient: 'linear-gradient(to right, #093028, #237A57)',
     },
     secondary: {
       light: '#ef6694',
@@ -34,7 +35,7 @@ const theme = createMuiTheme({
       dark: '#f57c00',
     },
     info: {
-      light: '#64b5f6',
+      light: '#64b3f4',
       main: '#2196f3',
       dark: '#1976d2',
     },

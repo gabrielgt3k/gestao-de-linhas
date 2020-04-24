@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    background: theme.palette.info.main,
+    background: theme.palette.primary.mainGradient,
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    background: theme.palette.info.dark,
+    background: '#093028',
   },
   drawerPaperClose: {
     overflowX: 'hidden',
