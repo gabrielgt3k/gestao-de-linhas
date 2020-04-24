@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, Container } from '@material-ui/core';
 import TotalLinhas from '../components/TotalLinhas';
 import TotalEquipamentos from '../components/TotalEquipamentos';
-import Nav from '../components/Nav';
 
 export default function Home() {
   const useStyles = makeStyles(() => ({
@@ -16,12 +15,10 @@ export default function Home() {
   const classes = useStyles();
 
   return (
-    <Nav>
-      <Container component="div" className={classes.container}>
-        <TotalLinhas />
-        <TotalEquipamentos />
-        <TotalEquipamentos />
-      </Container>
-    </Nav>
+    <Container component="div" className={classes.container}>
+      <TotalLinhas />
+      <TotalEquipamentos />
+      <TotalEquipamentos />
+    </Container>
   );
 }

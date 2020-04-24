@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Dialog,
@@ -18,7 +19,6 @@ import {
 } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
-
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
@@ -117,7 +117,8 @@ const DialogForm = props => {
       const response = await api[method](url, linhaSubmit);
       obtemTempLinha(response.data);
     } catch (error) {
-      alert('erro');
+      const errorMessage = error.response.data.error;
+      toast.error(errorMessage);
     }
     if (!isEditing) clearFields();
     setLoading(false);
